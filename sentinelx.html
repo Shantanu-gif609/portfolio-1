@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SentinelX – Project</title>
+  <style>
+    :root {
+      --bg-light: #f0f4f8;
+      --primary: #0077cc;
+      --text: #111;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      padding: 40px;
+      background: var(--bg-light);
+      color: var(--text);
+      transition: background 0.3s, color 0.3s;
+    }
+
+    .container {
+      max-width: 850px;
+      margin: auto;
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+      opacity: 0;
+      transform: translateY(40px);
+      animation: fadeInUp 1s ease forwards;
+    }
+
+    h1 {
+      margin-bottom: 15px;
+      font-size: 2rem;
+    }
+
+    h2 {
+      margin-top: 30px;
+      font-size: 1.3rem;
+      border-bottom: 2px solid #eee;
+      padding-bottom: 6px;
+    }
+
+    ul {
+      margin-left: 20px;
+      line-height: 1.7;
+    }
+
+    ul li {
+      opacity: 0;
+      transform: translateX(-20px);
+      transition: all 0.6s ease;
+    }
+
+    ul li.reveal.active {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 0.6s ease-out;
+    }
+
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    a.back {
+      text-decoration: none;
+      color: var(--primary);
+      font-weight: bold;
+      display: inline-block;
+      margin-bottom: 20px;
+      transition: all 0.2s ease-in-out;
+    }
+
+    a.back:hover {
+      color: #005fa3;
+      text-decoration: underline;
+    }
+
+    .back-to-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background-color: var(--primary);
+      color: white;
+      border: none;
+      padding: 12px 16px;
+      font-size: 18px;
+      border-radius: 50%;
+      cursor: pointer;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+      display: none;
+      transition: background 0.3s ease;
+    }
+
+    .back-to-top:hover {
+      background-color: #005fa3;
+    }
+
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 600px) {
+      body {
+        padding: 20px;
+      }
+      .container {
+        padding: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container reveal">
+    <a href="index.html#projects" class="back">← Back to Portfolio</a>
+    <h1>🛡️ SentinelX – Cybersecurity Suite</h1>
+    <p><strong>Role:</strong> Lead Developer / Security Architect</p>
+    <p><strong>Tech Stack:</strong> FastAPI, React.js, PostgreSQL, ELK, PyTorch, Kafka, Docker, Kubernetes, Keycloak</p>
+
+    <h2 class="reveal">Overview</h2>
+    <p class="reveal">
+      SentinelX is a scalable, modular cybersecurity platform for enterprises, combining threat detection,
+      IAM, encryption, and compliance automation in one unified dashboard.
+    </p>
+
+    <h2 class="reveal">Key Features</h2>
+    <ul>
+      <li class="reveal">🔐 Identity & Access Management (IAM) with OAuth2, RBAC, LDAP/SSO, and MFA</li>
+      <li class="reveal">🧠 AI-powered anomaly detection and GPT-based log analysis assistant</li>
+      <li class="reveal">🔍 Kafka-based SIEM + ELK dashboards and real-time log processing</li>
+      <li class="reveal">🔒 End-to-end file & message encryption using AES and RSA</li>
+      <li class="reveal">📜 Compliance scanner with automated GDPR, SOC2, ISO reports</li>
+      <li class="reveal">🛡️ Network threat detection via Suricata/Snort integration</li>
+      <li class="reveal">⚙️ SOAR playbooks with integrations (Slack, Jira, AWS)</li>
+    </ul>
+
+    <h2 class="reveal">Impact</h2>
+    <ul>
+      <li class="reveal">✅ Reduced enterprise audit time by 80% with auto-compliance reports</li>
+      <li class="reveal">✅ Deployable in cloud, on-prem, or hybrid setups</li>
+      <li class="reveal">✅ Modular design allows customization across industries</li>
+    </ul>
+
+
+  <!-- Back to top -->
+  <button onclick="scrollToTop()" id="topBtn" class="back-to-top" title="Back to Top">↑</button>
+
+  <script>
+    // Scroll reveal
+    function revealOnScroll() {
+      const reveals = document.querySelectorAll('.reveal');
+      for (const el of reveals) {
+        const windowHeight = window.innerHeight;
+        const elementTop = el.getBoundingClientRect().top;
+        const revealPoint = 100;
+
+        if (elementTop < windowHeight - revealPoint) {
+          el.classList.add('active');
+        }
+      }
+    }
+
+    window.addEventListener("scroll", revealOnScroll);
+    window.addEventListener("load", revealOnScroll);
+
+    // Back to top button
+    const topBtn = document.getElementById("topBtn");
+    window.onscroll = () => {
+      topBtn.style.display = (document.documentElement.scrollTop > 100) ? "block" : "none";
+    };
+
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  </script>
+</body>
+</html>
